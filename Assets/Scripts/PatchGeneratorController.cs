@@ -1,6 +1,20 @@
+using System;
 using UnityEngine;
 
-public class PatchGeneratorController : MonoBehaviour
+public sealed class PatchGeneratorController : MonoBehaviour
 {
-    [SerializeField] private int health;
+    private void Awake()
+    {
+        GetComponent<HealthController>().HealthDepleted += OnHealthDepleted;
+    }
+
+    private void OnDestroy()
+    {
+        GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
+    }
+
+    private void OnHealthDepleted(object sender, EventArgs args)
+    {
+        Destroy(gameObject);
+    }
 }
