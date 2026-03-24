@@ -27,11 +27,11 @@ public sealed class DebuggingToolController : MonoBehaviour
 
         if (Physics.Raycast(start, transform.forward, out RaycastHit hit))
         {
-            Rigidbody body = hit.rigidbody;
+            GameObject target = hit.collider.gameObject;
 
-            if (body is not null && body.CompareTag("Enemy"))
+            if (target.CompareTag("Enemy"))
             {
-                body.GetComponent<HealthController>().TakeDamage(damage);
+                target.GetComponent<HealthController>().TakeDamage(damage);
             }
 
             end = hit.point;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,16 +7,29 @@ public class WorkerMovement : MonoBehaviour
     NavMeshAgent enemy;
     GameObject destination;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
+    {
+        GetComponent<HealthController>().HealthDepleted += OnHealthDepleted;
+    }
+
+    private void Start()
     {
         enemy = GetComponent<NavMeshAgent>();
         destination = GameObject.FindWithTag("PatchGenerator");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         enemy.SetDestination(destination.transform.position);
+    }
+
+    private void OnDestroy()
+    {
+        GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
+    }
+
+    private void OnHealthDepleted(object sender, EventArgs args)
+    {
+        Destroy(gameObject);
     }
 }
