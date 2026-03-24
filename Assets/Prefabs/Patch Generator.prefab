@@ -100,7 +100,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 309202371363240936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ee94db0cb0af140886edea6a994e53, type: 3}
+  m_Script: {fileID: 11500000, guid: a2f65a538b1c1d34099a4d09a7bff5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatchGeneratorController
-  health: 0
+  maxHealth: 100
