@@ -7,7 +7,7 @@ public sealed class DebuggingToolController : MonoBehaviour
 
     [SerializeField] private GameObject laserPrefab;
     [SerializeField] private InputActionAsset action;
-    [SerializeField] private float strength;
+    [SerializeField] private int damage;
 
     private void Start()
     {
@@ -27,6 +27,13 @@ public sealed class DebuggingToolController : MonoBehaviour
 
         if (Physics.Raycast(start, transform.forward, out RaycastHit hit))
         {
+            Rigidbody body = hit.rigidbody;
+
+            if (body is not null && body.CompareTag("Enemy"))
+            {
+                body.GetComponent<HealthController>().TakeDamage(damage);
+            }
+
             end = hit.point;
         }
         else
