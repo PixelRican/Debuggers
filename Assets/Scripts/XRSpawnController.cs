@@ -2,7 +2,7 @@ using System.Collections;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
-public class XRSpawnController : MonoBehaviour
+public sealed class XRSpawnController : MonoBehaviour
 {
     [SerializeField] private XROrigin origin;
     [SerializeField] private Vector3 offset;
