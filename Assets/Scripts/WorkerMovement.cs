@@ -4,23 +4,24 @@ using UnityEngine.AI;
 
 public class WorkerMovement : MonoBehaviour
 {
-    NavMeshAgent enemy;
-    GameObject destination;
+    [SerializeField] private string preferredTargetTag;
+    private Transform target;
+    private NavMeshAgent agent;
 
     private void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
         GetComponent<HealthController>().HealthDepleted += OnHealthDepleted;
     }
 
     private void Start()
     {
-        enemy = GetComponent<NavMeshAgent>();
-        destination = GameObject.FindWithTag("PatchGenerator");
+        target = GameObject.FindGameObjectWithTag(preferredTargetTag).transform;
     }
 
     private void Update()
     {
-        enemy.SetDestination(destination.transform.position);
+        agent.SetDestination(target.position);
     }
 
     private void OnDestroy()
