@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class ErromiteController : MonoBehaviour
 {
     [SerializeField] private string preferredTargetTag;
+    [SerializeField] private int damage;
     private Transform target;
     private NavMeshAgent agent;
 
@@ -27,6 +28,17 @@ public class ErromiteController : MonoBehaviour
     private void OnDestroy()
     {
         GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        GameObject victim = other.gameObject;
+
+        if (victim.CompareTag(preferredTargetTag))
+        {
+            victim.GetComponent<HealthController>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 
     private void OnHealthDepleted(object sender, EventArgs args)
