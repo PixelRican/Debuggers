@@ -415,8 +415,8 @@ MonoBehaviour:
   - {fileID: 1767839428}
   - {fileID: 278750384}
   erromitePrefabs:
-  - {fileID: 1949509907848437923, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
-  - {fileID: 1949509907848437923, guid: cf7a5d72305374e43ad57536f5643b78, type: 3}
+  - {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
+  - {fileID: 4446927468426457508, guid: cf7a5d72305374e43ad57536f5643b78, type: 3}
 --- !u!4 &517700168
 Transform:
   m_ObjectHideFlags: 0
