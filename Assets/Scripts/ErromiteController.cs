@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class WorkerMovement : MonoBehaviour
+public class ErromiteController : MonoBehaviour
 {
     [SerializeField] private string preferredTargetTag;
     private Transform target;
