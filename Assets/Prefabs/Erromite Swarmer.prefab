@@ -10,16 +10,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5141355548848607373, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: maxHealth
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1949509907848437923, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: m_Name
-      value: Erromite Soldier
+      value: Erromite Swarmer
       objectReference: {fileID: 0}
     - target: {fileID: 3986711992706385162, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 55fa12dc7870f1e46b6a7f8617949a86, type: 2}
+      objectReference: {fileID: 2100000, guid: ab8f3d9758920484888c1dce761cedc7, type: 2}
+    - target: {fileID: 6113934200077446354, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+      propertyPath: range
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6113934200077446354, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: damage
       value: 20

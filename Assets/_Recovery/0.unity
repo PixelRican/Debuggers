@@ -295,7 +295,7 @@ NavMeshObstacle:
   m_Extents: {x: 0.5, y: 1, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 1
-  m_CarveOnlyStationary: 0
+  m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
 --- !u!1001 &441087506
@@ -309,34 +309,6 @@ PrefabInstance:
     - target: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_TagString
       value: MainCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      propertyPath: field of view
-      value: 60.000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      propertyPath: m_FocalLength
-      value: 20.78461
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      propertyPath: m_projectionMatrixMode
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 153982007679157697, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_MoveSpeed
@@ -453,7 +425,7 @@ MonoBehaviour:
   waves:
   - Spawns:
     - Location: {fileID: 669892837}
-      Prefab: {fileID: 4446927468426457508, guid: 258aba5d524273845af036c95f49f311, type: 3}
+      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
     - Location: {fileID: 1646370733}
       Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
     - Location: {fileID: 1767839428}
@@ -469,15 +441,6 @@ MonoBehaviour:
       Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
     - Location: {fileID: 278750384}
       Prefab: {fileID: 4446927468426457508, guid: cf7a5d72305374e43ad57536f5643b78, type: 3}
-  - Spawns:
-    - Location: {fileID: 669892837}
-      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
-    - Location: {fileID: 1646370733}
-      Prefab: {fileID: 4446927468426457508, guid: cf7a5d72305374e43ad57536f5643b78, type: 3}
-    - Location: {fileID: 1767839428}
-      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
-    - Location: {fileID: 278750384}
-      Prefab: {fileID: 4446927468426457508, guid: 258aba5d524273845af036c95f49f311, type: 3}
 --- !u!4 &517700168
 Transform:
   m_ObjectHideFlags: 0
@@ -508,10 +471,6 @@ PrefabInstance:
     - target: {fileID: 264958741472531643, guid: 799541823c9d6fc47997a858b3dc71c5, type: 3}
       propertyPath: m_Name
       value: Debugging Tool
-      objectReference: {fileID: 0}
-    - target: {fileID: 264958741472531643, guid: 799541823c9d6fc47997a858b3dc71c5, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8744439974909972682, guid: 799541823c9d6fc47997a858b3dc71c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -662,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7705119052336339139, guid: bb4ebefa08dcddd44951a433dd925f6b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.135
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 7705119052336339139, guid: bb4ebefa08dcddd44951a433dd925f6b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1447,7 +1406,7 @@ Transform:
   m_GameObject: {fileID: 1800167402}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0.125, z: 0}
   m_LocalScale: {x: 3, y: 0.25, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []

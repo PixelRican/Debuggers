@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +7,7 @@ public class ErromiteController : MonoBehaviour
 {
     [SerializeField] private string preferredTargetTag;
     [SerializeField] private int damage;
+    [SerializeField] private int range;
     private Transform target;
     private NavMeshAgent agent;
 
@@ -22,8 +24,26 @@ public class ErromiteController : MonoBehaviour
 
     private void Update()
     {
-        agent.SetDestination(target.position);
+        transform.LookAt(target);
+        if (Vector3.Distance(transform.position, target.transform.position) > range)  // If range is zero, always move to melee
+        {
+            agent.SetDestination(target.position);
+        }
+        else if (agent.Raycast(target.position, out NavMeshHit hit))  // Check for line of sight
+        {
+            agent.SetDestination(target.position);  // Player not visible, keep moving
+        }
+        else  // If can see the player and within range, stop to attack
+        {
+            agent.ResetPath();
+            // StartCoroutine(RangedAttack());
+        }
     }
+
+    /*public IEnumerator RangedAttack()
+    {
+        yield return new WaitForSeconds(0.5f);
+    }*/
 
     private void OnDestroy()
     {
