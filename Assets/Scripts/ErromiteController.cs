@@ -1,15 +1,16 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ErromiteController : MonoBehaviour
+public sealed class ErromiteController : MonoBehaviour
 {
+    [SerializeField] private string initialTargetTag;
     [SerializeField] private string preferredTargetTag;
     [SerializeField] private int damage;
     [SerializeField] private int range;
-    private Transform target;
     private NavMeshAgent agent;
+    private Transform preferredTarget;
+    private Transform target;
 
     private void Awake()
     {
@@ -19,46 +20,47 @@ public class ErromiteController : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag(preferredTargetTag).transform;
+        target = GameObject.FindWithTag(initialTargetTag).transform;
+        preferredTarget = GameObject.FindWithTag(preferredTargetTag).transform;
     }
 
     private void Update()
     {
-        transform.LookAt(target);
-        if (Vector3.Distance(transform.position, target.transform.position) > range)  // If range is zero, always move to melee
+        // Check for line of sight with preferred target.
+        if (target != preferredTarget)
         {
+            Vector3 origin = transform.position;
+            Vector3 direction = preferredTarget.position - origin;
+
+            // Chase after preferred target when found.
+            if (Physics.Raycast(origin, direction, out RaycastHit hit) && hit.transform == preferredTarget)
+            {
+                target = preferredTarget;
+            }
+            
+            Debug.DrawRay(origin, direction, Color.yellow);
+            Debug.Log(hit.transform.gameObject);
+        }
+
+        // ゴゴゴ Stare down the target menacingly ゴゴゴ
+        transform.LookAt(target);
+
+        // Check distance between self and target.
+        if (Vector3.Distance(transform.position, target.transform.position) > range)
+        {
+            // Target is not close enough, keep moving.
             agent.SetDestination(target.position);
         }
-        else if (agent.Raycast(target.position, out NavMeshHit hit))  // Check for line of sight
+        else
         {
-            agent.SetDestination(target.position);  // Player not visible, keep moving
-        }
-        else  // If can see the player and within range, stop to attack
-        {
+            // Target is within range, stop to attack.
             agent.ResetPath();
-            // StartCoroutine(RangedAttack());
         }
     }
-
-    /*public IEnumerator RangedAttack()
-    {
-        yield return new WaitForSeconds(0.5f);
-    }*/
 
     private void OnDestroy()
     {
         GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        GameObject victim = other.gameObject;
-
-        if (victim.CompareTag(preferredTargetTag))
-        {
-            victim.GetComponent<HealthController>().TakeDamage(damage);
-            Destroy(gameObject);
-        }
     }
 
     private void OnHealthDepleted(object sender, EventArgs args)

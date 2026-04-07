@@ -179,8 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c300230f84cb941a6b41aaaceb61dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorkerMovement
+  initialTargetTag: PatchGenerator
   preferredTargetTag: 
   damage: 0
+  range: 0
 --- !u!114 &-5141355548848607373
 MonoBehaviour:
   m_ObjectHideFlags: 0
