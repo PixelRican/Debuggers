@@ -22,15 +22,23 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ab8f3d9758920484888c1dce761cedc7, type: 2}
     - target: {fileID: 6113934200077446354, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: range
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6113934200077446354, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: damage
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6113934200077446354, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+      propertyPath: priorityTargetTag
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113934200077446354, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: preferredTargetTag
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113934200077446354, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+      propertyPath: playerDetectionRadius
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8316023106420131027, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: m_LocalPosition.x

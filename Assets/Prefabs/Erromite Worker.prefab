@@ -29,6 +29,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6113934200077446354, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+      propertyPath: priorityTargetTag
+      value: PatchGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113934200077446354, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: preferredTargetTag
       value: PatchGenerator
       objectReference: {fileID: 0}

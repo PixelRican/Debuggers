@@ -1,61 +1,83 @@
 using System;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public sealed class ErromiteController : MonoBehaviour
 {
-    [SerializeField] private string initialTargetTag;
-    [SerializeField] private string preferredTargetTag;
     [SerializeField] private int damage;
-    [SerializeField] private int range;
-    private NavMeshAgent agent;
-    private Transform preferredTarget;
-    private Transform target;
+    [SerializeField] private float range;
+    [SerializeField] private float playerDetectionRadius;
+    private Collider _patchGeneratorCollider;
+    private Collider _playerCollider;
+    private NavMeshAgent _agent;
 
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        _agent = GetComponent<NavMeshAgent>();
         GetComponent<HealthController>().HealthDepleted += OnHealthDepleted;
     }
 
     private void Start()
     {
-        target = GameObject.FindWithTag(initialTargetTag).transform;
-        preferredTarget = GameObject.FindWithTag(preferredTargetTag).transform;
+        _patchGeneratorCollider = GameObject.FindWithTag("PatchGenerator").GetComponent<Collider>();
+        _playerCollider = GameObject.FindWithTag("Player").GetComponent<Collider>();
     }
 
     private void Update()
     {
-        // Check for line of sight with preferred target.
-        if (target != preferredTarget)
-        {
-            Vector3 origin = transform.position;
-            Vector3 direction = preferredTarget.position - origin;
-
-            // Chase after preferred target when found.
-            if (Physics.Raycast(origin, direction, out RaycastHit hit) && hit.transform == preferredTarget)
-            {
-                target = preferredTarget;
-            }
-            
-            Debug.DrawRay(origin, direction, Color.yellow);
-            Debug.Log(hit.transform.gameObject);
-        }
+        // Target the player when detected. Otherwise, target the patch generator.
+        GameObject target = playerDetectionRadius > 0.0f ? GetPlayerIfDetected() : _patchGeneratorCollider.gameObject;
 
         // ゴゴゴ Stare down the target menacingly ゴゴゴ
-        transform.LookAt(target);
+        transform.LookAt(target.transform);
 
         // Check distance between self and target.
         if (Vector3.Distance(transform.position, target.transform.position) > range)
         {
-            // Target is not close enough, keep moving.
-            agent.SetDestination(target.position);
+            // Target is not close enough, move closer.
+            _agent.SetDestination(target.transform.position);
         }
         else
         {
             // Target is within range, stop to attack.
-            agent.ResetPath();
+            _agent.ResetPath();
         }
+    }
+
+    private GameObject GetPlayerIfDetected()
+    {
+        int pointsHidden = 0;
+        Bounds bounds = _playerCollider.bounds;
+        NativeArray<Vector3> points = new NativeArray<Vector3>(8, Allocator.Temp);
+        points[0] = bounds.min;
+        points[1] = bounds.max;
+        points[2] = new Vector3(bounds.min.x, bounds.min.y, bounds.max.z);
+        points[3] = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
+        points[4] = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
+        points[5] = new Vector3(bounds.min.x, bounds.max.y, bounds.max.z);
+        points[6] = new Vector3(bounds.max.x, bounds.min.y, bounds.max.z);
+        points[7] = new Vector3(bounds.max.x, bounds.max.y, bounds.min.z);
+
+        // Determine whether any part of the player's collider is visible within detection range.
+        foreach (Vector3 point in points)
+        {
+            Vector3 origin = transform.position;
+
+            // Cast a ray at point and determine whether an obstacle is in the way.
+            if (Physics.Raycast(origin, point - origin, out RaycastHit hit, playerDetectionRadius) &&
+                Vector3.Distance(origin, hit.point) < Vector3.Distance(origin, point))
+            {
+                // Count the number of points that are blocked by obstacles.
+                pointsHidden++;
+            }
+        }
+
+        // Manually free the memory allocated.
+        points.Dispose();
+
+        // Target the player when they are within line of sight; otherwise, target the patch generator.
+        return (pointsHidden < points.Length ? _playerCollider : _patchGeneratorCollider).gameObject;
     }
 
     private void OnDestroy()
