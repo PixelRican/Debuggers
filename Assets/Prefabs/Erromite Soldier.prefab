@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Erromite Soldier
       objectReference: {fileID: 0}
+    - target: {fileID: 1949509907848437923, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3986711992706385162, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

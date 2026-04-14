@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Erromite Swarmer
       objectReference: {fileID: 0}
+    - target: {fileID: 1949509907848437923, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3986711992706385162, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -110,3 +114,4 @@ MonoBehaviour:
   attackWindup: 0.5
   attackCooldown: 2
   playerDetectionRadius: 20
+  projectilePrefab: {fileID: 1174323007156943271, guid: 2210a01d6d96f2a43b90d9ba18385841, type: 3}

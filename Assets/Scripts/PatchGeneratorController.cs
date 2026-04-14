@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public sealed class PatchGeneratorController : MonoBehaviour
 {
@@ -16,5 +17,6 @@ public sealed class PatchGeneratorController : MonoBehaviour
     private void OnHealthDepleted(object sender, EventArgs args)
     {
         Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

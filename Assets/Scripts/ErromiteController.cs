@@ -43,20 +43,24 @@ public abstract class ErromiteController : MonoBehaviour
             // Target is not close enough, move closer.
             if (_target is not null)
             {
-                _target = null;
-                _agent.isStopped = false;
                 CancelInvoke(nameof(OnAttack));
             }
 
+            _target = null;
+            _agent.isStopped = false;
             _agent.SetDestination(target.transform.position);
         }
-        else if (_target is null)
+        else
         {
             // Target is within range, stop to attack.
+            if (_target is null)
+            {
+                InvokeRepeating(nameof(OnAttack), attackWindup, attackCooldown);
+            }
+
             _target = target;
-            _agent.velocity = Vector2.zero;
             _agent.isStopped = true;
-            InvokeRepeating(nameof(OnAttack), attackWindup, attackCooldown);
+            _agent.velocity = Vector2.zero;
         }
     }
 

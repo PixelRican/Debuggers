@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Erromite Worker
       objectReference: {fileID: 0}
+    - target: {fileID: 1949509907848437923, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3986711992706385162, guid: f6232ce455849a740a19fddc4683c080, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -105,4 +109,4 @@ MonoBehaviour:
   attackRange: 2
   attackWindup: 1
   attackCooldown: 0.5
-  playerDetectionRadius: 0.01
+  playerDetectionRadius: 0
