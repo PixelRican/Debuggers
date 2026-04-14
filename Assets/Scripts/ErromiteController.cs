@@ -38,12 +38,14 @@ public abstract class ErromiteController : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) > attackRange)
         {
             // Target is not close enough, move closer.
+            _agent.isStopped = false;
             _agent.SetDestination(target.transform.position);
         }
         else
         {
             // Target is within range, stop to attack.
-            _agent.ResetPath();
+            _agent.velocity = Vector2.zero;
+            _agent.isStopped = true;
             Attack(target);
         }
     }
