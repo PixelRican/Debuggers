@@ -3,14 +3,16 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public sealed class ErromiteController : MonoBehaviour
+public abstract class ErromiteController : MonoBehaviour
 {
-    [SerializeField] private int damage;
-    [SerializeField] private float range;
+    [SerializeField] private int attackDamage;
+    [SerializeField] private float attackRange;
     [SerializeField] private float playerDetectionRadius;
     private Collider _patchGeneratorCollider;
     private Collider _playerCollider;
     private NavMeshAgent _agent;
+
+    protected abstract void Attack(GameObject target);
 
     private void Awake()
     {
@@ -33,7 +35,7 @@ public sealed class ErromiteController : MonoBehaviour
         transform.LookAt(target.transform);
 
         // Check distance between self and target.
-        if (Vector3.Distance(transform.position, target.transform.position) > range)
+        if (Vector3.Distance(transform.position, target.transform.position) > attackRange)
         {
             // Target is not close enough, move closer.
             _agent.SetDestination(target.transform.position);
@@ -42,6 +44,7 @@ public sealed class ErromiteController : MonoBehaviour
         {
             // Target is within range, stop to attack.
             _agent.ResetPath();
+            Attack(target);
         }
     }
 

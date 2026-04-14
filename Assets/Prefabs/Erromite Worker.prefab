@@ -79,5 +79,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1949509907848437923, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 9174256071580757424}
   m_SourcePrefab: {fileID: 100100000, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+--- !u!1 &6652554109054403229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1949509907848437923, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+  m_PrefabInstance: {fileID: 5142145787650236990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9174256071580757424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652554109054403229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424c4656e41a4517a79e9a8e7627aab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeErromiteController
+  attackDamage: 10
+  attackRange: 2
+  playerDetectionRadius: 0

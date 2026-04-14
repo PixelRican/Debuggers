@@ -83,5 +83,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1949509907848437923, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9049910519553610685}
   m_SourcePrefab: {fileID: 100100000, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+--- !u!1 &4446927468426457508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1949509907848437923, guid: f6232ce455849a740a19fddc4683c080, type: 3}
+  m_PrefabInstance: {fileID: 2790160385264931079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9049910519553610685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4446927468426457508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96642a661fb454c8d90ac46f6fb462a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangedErromiteController
+  attackDamage: 20
+  attackRange: 5
+  playerDetectionRadius: 20
