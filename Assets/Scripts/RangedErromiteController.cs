@@ -2,7 +2,7 @@
 
 public sealed class RangedErromiteController : ErromiteController
 {
-    protected override void Attack(GameObject target)
+    protected override void Attack(GameObject target, int damage)
     {
         Debug.Log($"Attacking {target}");
     }

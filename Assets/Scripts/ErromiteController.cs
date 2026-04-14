@@ -7,12 +7,15 @@ public abstract class ErromiteController : MonoBehaviour
 {
     [SerializeField] private int attackDamage;
     [SerializeField] private float attackRange;
+    [SerializeField] private float attackWindup;
+    [SerializeField] private float attackCooldown;
     [SerializeField] private float playerDetectionRadius;
     private Collider _patchGeneratorCollider;
     private Collider _playerCollider;
     private NavMeshAgent _agent;
+    private GameObject _target;
 
-    protected abstract void Attack(GameObject target);
+    protected abstract void Attack(GameObject target, int damage);
 
     private void Awake()
     {
@@ -38,15 +41,22 @@ public abstract class ErromiteController : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) > attackRange)
         {
             // Target is not close enough, move closer.
-            _agent.isStopped = false;
+            if (_target is not null)
+            {
+                _target = null;
+                _agent.isStopped = false;
+                CancelInvoke(nameof(OnAttack));
+            }
+
             _agent.SetDestination(target.transform.position);
         }
-        else
+        else if (_target is null)
         {
             // Target is within range, stop to attack.
+            _target = target;
             _agent.velocity = Vector2.zero;
             _agent.isStopped = true;
-            Attack(target);
+            InvokeRepeating(nameof(OnAttack), attackWindup, attackCooldown);
         }
     }
 
@@ -93,5 +103,10 @@ public abstract class ErromiteController : MonoBehaviour
     private void OnHealthDepleted(object sender, EventArgs args)
     {
         Destroy(gameObject);
+    }
+
+    private void OnAttack()
+    {
+        Attack(_target, attackDamage);
     }
 }

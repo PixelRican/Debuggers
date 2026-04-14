@@ -81,7 +81,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1949509907848437923, guid: f6232ce455849a740a19fddc4683c080, type: 3}
-      insertIndex: 6
+      insertIndex: -1
       addedObject: {fileID: 9174256071580757424}
   m_SourcePrefab: {fileID: 100100000, guid: f6232ce455849a740a19fddc4683c080, type: 3}
 --- !u!1 &6652554109054403229 stripped
@@ -103,4 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeleeErromiteController
   attackDamage: 10
   attackRange: 2
-  playerDetectionRadius: 0
+  attackWindup: 1
+  attackCooldown: 0.5
+  playerDetectionRadius: 0.01

@@ -2,8 +2,12 @@
 
 public sealed class MeleeErromiteController : ErromiteController
 {
-    protected override void Attack(GameObject target)
+    protected override void Attack(GameObject target, int damage)
     {
-        Debug.Log($"Attacking {target}");
+        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        Destroy(sphere.GetComponent<Collider>());
+        Destroy(sphere, 1.0f);
+        sphere.transform.position = target.transform.position;
+        target.GetComponent<HealthController>().TakeDamage(damage);
     }
 }

@@ -107,4 +107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RangedErromiteController
   attackDamage: 20
   attackRange: 5
+  attackWindup: 0.5
+  attackCooldown: 2
   playerDetectionRadius: 20
