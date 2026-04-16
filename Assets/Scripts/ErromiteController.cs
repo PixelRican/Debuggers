@@ -7,9 +7,10 @@ using UnityEngine.AI;
 public abstract class ErromiteController : MonoBehaviour
 {
     [SerializeField] private int attackDamage;
-    [SerializeField] private float attackRange;
     [SerializeField] private float attackWindup;
     [SerializeField] private float attackCooldown;
+    [SerializeField] private float minimumAttackRange;
+    [SerializeField] private float maximumAttackRange;
     [SerializeField] private float playerDetectionRadius;
     private IEnumerator<WaitForSeconds> _attackCoroutine;
     private Collider _patchGeneratorCollider;
@@ -38,22 +39,10 @@ public abstract class ErromiteController : MonoBehaviour
 
         // ゴゴゴ Stare down the target menacingly ゴゴゴ
         transform.LookAt(target.transform);
+        float distance = Vector3.Distance(transform.position, target.transform.position);
 
         // Check distance between self and target.
-        if (Vector3.Distance(transform.position, target.transform.position) > attackRange)
-        {
-            // Target is not close enough, move closer.
-            if (_attackCoroutine is not null)
-            {
-                StopCoroutine(_attackCoroutine);
-                _attackCoroutine = null;
-            }
-
-            _target = null;
-            _agent.isStopped = false;
-            _agent.SetDestination(target.transform.position);
-        }
-        else
+        if (distance <= minimumAttackRange)
         {
             // Target is within range, stop to attack.
             if (_attackCoroutine is null)
@@ -62,9 +51,24 @@ public abstract class ErromiteController : MonoBehaviour
                 StartCoroutine(_attackCoroutine);
             }
 
+            // Stay still until the target moves out of range.
             _target = target;
             _agent.isStopped = true;
             _agent.velocity = Vector2.zero;
+        }
+        else if (distance > maximumAttackRange)
+        {
+            // Target is out of attack range, stop attacking.
+            if (_attackCoroutine is not null)
+            {
+                StopCoroutine(_attackCoroutine);
+                _attackCoroutine = null;
+            }
+
+            // Target is not close enough, move closer.
+            _target = null;
+            _agent.isStopped = false;
+            _agent.SetDestination(target.transform.position);
         }
     }
 
