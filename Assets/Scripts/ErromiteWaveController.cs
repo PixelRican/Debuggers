@@ -7,24 +7,37 @@ public class ErromiteWaveController : MonoBehaviour
     [SerializeField] private float waveDowntime;
     [SerializeField] private float spawnRate;
     [SerializeField] private WaveEntry[] waves;
-    private IEnumerator<WaitForSeconds> spawnCoroutine;
-    private WaveEntry currentWave;
-    private int waveIndex;
-    private int spawnIndex;
+    private HealthController _patchGeneratorHealth;
+    private IEnumerator<WaitForSeconds> _spawnCoroutine;
+    private WaveEntry _currentWave;
+    private int _waveIndex;
+    private int _spawnIndex;
+
+    private void Start()
+    {
+        _patchGeneratorHealth = GameObject.FindWithTag("PatchGenerator").GetComponent<HealthController>();
+    }
 
     private void OnEnable()
     {
-        currentWave.Spawns = Array.Empty<SpawnEntry>();
-        waveIndex = -1;
-        spawnIndex = -1;
-        spawnCoroutine = GetSpawnCoroutine();
-        StartCoroutine(spawnCoroutine);
+        _currentWave.Spawns = Array.Empty<SpawnEntry>();
+        _waveIndex = -1;
+        _spawnIndex = -1;
+        _spawnCoroutine = GetSpawnCoroutine();
+        StartCoroutine(_spawnCoroutine);
+        _patchGeneratorHealth.HealthDepleted += OnPatchGeneratorDestroyed;
     }
 
     private void OnDisable()
     {
-        StopCoroutine(spawnCoroutine);
-        spawnCoroutine = null;
+        StopCoroutine(_spawnCoroutine);
+        _spawnCoroutine = null;
+        _patchGeneratorHealth.HealthDepleted -= OnPatchGeneratorDestroyed;
+    }
+
+    private void OnPatchGeneratorDestroyed(object sender, EventArgs e)
+    {
+        enabled = false;
     }
 
     private IEnumerator<WaitForSeconds> GetSpawnCoroutine()
@@ -34,12 +47,12 @@ public class ErromiteWaveController : MonoBehaviour
 
         while (true)
         {
-            WaveEntry wave = currentWave;
-            int nextSpawnIndex = spawnIndex + 1;
+            WaveEntry wave = _currentWave;
+            int nextSpawnIndex = _spawnIndex + 1;
 
-            if (nextSpawnIndex >= currentWave.Spawns.Length)
+            if (nextSpawnIndex >= _currentWave.Spawns.Length)
             {
-                int nextWaveIndex = waveIndex + 1;
+                int nextWaveIndex = _waveIndex + 1;
 
                 if (nextWaveIndex >= waves.Length)
                 {
@@ -47,8 +60,8 @@ public class ErromiteWaveController : MonoBehaviour
                 }
 
                 nextSpawnIndex = 0;
-                wave = currentWave = waves[nextWaveIndex];
-                waveIndex = nextWaveIndex;
+                wave = _currentWave = waves[nextWaveIndex];
+                _waveIndex = nextWaveIndex;
 
                 if (nextWaveIndex > 0)
                 {
@@ -61,7 +74,7 @@ public class ErromiteWaveController : MonoBehaviour
             }
 
             wave.Spawns[nextSpawnIndex].Spawn();
-            spawnIndex = nextSpawnIndex;
+            _spawnIndex = nextSpawnIndex;
             yield return spawnTime;
         }
     }
