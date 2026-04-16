@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,6 +11,7 @@ public abstract class ErromiteController : MonoBehaviour
     [SerializeField] private float attackWindup;
     [SerializeField] private float attackCooldown;
     [SerializeField] private float playerDetectionRadius;
+    private IEnumerator<WaitForSeconds> _attackCoroutine;
     private Collider _patchGeneratorCollider;
     private Collider _playerCollider;
     private NavMeshAgent _agent;
@@ -41,9 +43,10 @@ public abstract class ErromiteController : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) > attackRange)
         {
             // Target is not close enough, move closer.
-            if (_target is not null)
+            if (_attackCoroutine is not null)
             {
-                CancelInvoke(nameof(OnAttack));
+                StopCoroutine(_attackCoroutine);
+                _attackCoroutine = null;
             }
 
             _target = null;
@@ -53,9 +56,10 @@ public abstract class ErromiteController : MonoBehaviour
         else
         {
             // Target is within range, stop to attack.
-            if (_target is null)
+            if (_attackCoroutine is null)
             {
-                InvokeRepeating(nameof(OnAttack), attackWindup, attackCooldown);
+                _attackCoroutine = GetAttackCoroutine();
+                StartCoroutine(_attackCoroutine);
             }
 
             _target = target;
@@ -109,8 +113,16 @@ public abstract class ErromiteController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnAttack()
+    private IEnumerator<WaitForSeconds> GetAttackCoroutine()
     {
-        Attack(_target, attackDamage);
+        yield return new WaitForSeconds(attackWindup);
+
+        WaitForSeconds cooldownTime = new WaitForSeconds(attackCooldown);
+
+        while (true)
+        {
+            Attack(_target, attackDamage);
+            yield return cooldownTime;
+        }
     }
 }
