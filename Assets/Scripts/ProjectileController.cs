@@ -26,7 +26,6 @@ public class ProjectileController : MonoBehaviour
             health.TakeDamage(_damage);
         }
 
-        Debug.Log(other.gameObject);
         Destroy(gameObject);
     }
 }

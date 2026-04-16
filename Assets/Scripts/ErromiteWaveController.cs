@@ -1,9 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ErromiteWaveController : MonoBehaviour
 {
+    [SerializeField] private float waveDowntime;
+    [SerializeField] private float spawnRate;
     [SerializeField] private WaveEntry[] waves;
+    private IEnumerator<WaitForSeconds> spawnCoroutine;
     private WaveEntry currentWave;
     private int waveIndex;
     private int spawnIndex;
@@ -13,35 +17,53 @@ public class ErromiteWaveController : MonoBehaviour
         currentWave.Spawns = Array.Empty<SpawnEntry>();
         waveIndex = -1;
         spawnIndex = -1;
-        InvokeRepeating(nameof(SpawnErromite), 5.0f, 5.0f);
+        spawnCoroutine = GetSpawnCoroutine();
+        StartCoroutine(spawnCoroutine);
     }
 
     private void OnDisable()
     {
-        CancelInvoke(nameof(SpawnErromite));
+        StopCoroutine(spawnCoroutine);
+        spawnCoroutine = null;
     }
 
-    private void SpawnErromite()
+    private IEnumerator<WaitForSeconds> GetSpawnCoroutine()
     {
-        WaveEntry wave = currentWave;
-        int nextSpawnIndex = spawnIndex + 1;
+        WaitForSeconds waveTime = new WaitForSeconds(waveDowntime);
+        WaitForSeconds spawnTime = new WaitForSeconds(spawnRate);
 
-        if (nextSpawnIndex >= currentWave.Spawns.Length)
+        while (true)
         {
-            int nextWaveIndex = waveIndex + 1;
+            WaveEntry wave = currentWave;
+            int nextSpawnIndex = spawnIndex + 1;
 
-            if (nextWaveIndex >= waves.Length)
+            if (nextSpawnIndex >= currentWave.Spawns.Length)
             {
-                return;
+                int nextWaveIndex = waveIndex + 1;
+
+                if (nextWaveIndex >= waves.Length)
+                {
+                    yield break;
+                }
+
+                nextSpawnIndex = 0;
+                wave = currentWave = waves[nextWaveIndex];
+                waveIndex = nextWaveIndex;
+
+                if (nextWaveIndex > 0)
+                {
+                    yield return waveTime;
+                }
+                else
+                {
+                    yield return spawnTime;
+                }
             }
 
-            nextSpawnIndex = 0;
-            wave = currentWave = waves[nextWaveIndex];
-            waveIndex = nextWaveIndex;
+            wave.Spawns[nextSpawnIndex].Spawn();
+            spawnIndex = nextSpawnIndex;
+            yield return spawnTime;
         }
-
-        wave.Spawns[nextSpawnIndex].Spawn();
-        spawnIndex = nextSpawnIndex;
     }
 
     [Serializable]

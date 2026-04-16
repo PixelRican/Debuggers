@@ -453,6 +453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9951b1da2be80b4bb93945a0bb6c7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ErromiteWaveController
+  waveDowntime: 10
+  spawnRate: 5
   waves:
   - Spawns:
     - Location: {fileID: 669892837}
