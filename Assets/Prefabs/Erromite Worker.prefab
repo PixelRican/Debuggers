@@ -106,7 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeErromiteController
   attackDamage: 10
-  attackRange: 2
   attackWindup: 1
   attackCooldown: 0.5
+  minimumAttackRange: 2
+  maximumAttackRange: 3
   playerDetectionRadius: 0
