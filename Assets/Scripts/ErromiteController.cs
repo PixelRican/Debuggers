@@ -16,7 +16,6 @@ public abstract class ErromiteController : MonoBehaviour
     private Collider _patchGeneratorCollider;
     private Collider _playerCollider;
     private NavMeshAgent _agent;
-    private GameObject _target;
 
     protected abstract void Attack(GameObject target, int damage);
 
@@ -41,35 +40,35 @@ public abstract class ErromiteController : MonoBehaviour
         transform.LookAt(target.transform);
         float distance = Vector3.Distance(transform.position, target.transform.position);
 
-        // Check distance between self and target.
-        if (distance <= minimumAttackRange)
+        // Determine whether the erromite is currently attacking its target.
+        if (_attackCoroutine is null)
         {
-            // Target is within range, stop to attack.
-            if (_attackCoroutine is null)
+            // If not attacking, then determine whether its target is within attack range.
+            if (distance <= minimumAttackRange)
             {
-                _attackCoroutine = GetAttackCoroutine();
+                // Target is within attack range, stop moving and attack.
+                _agent.isStopped = true;
+                _agent.velocity = Vector2.zero;
+                _attackCoroutine = GetAttackCoroutine(target);
                 StartCoroutine(_attackCoroutine);
+                return;
             }
-
-            // Stay still until the target moves out of range.
-            _target = target;
-            _agent.isStopped = true;
-            _agent.velocity = Vector2.zero;
         }
         else if (distance > maximumAttackRange)
         {
-            // Target is out of attack range, stop attacking.
-            if (_attackCoroutine is not null)
-            {
-                StopCoroutine(_attackCoroutine);
-                _attackCoroutine = null;
-            }
-
-            // Target is not close enough, move closer.
-            _target = null;
+            // Target is outside of attack range, stop attacking and chase.
+            StopCoroutine(_attackCoroutine);
+            _attackCoroutine = null;
             _agent.isStopped = false;
-            _agent.SetDestination(target.transform.position);
         }
+        else
+        {
+            // Target is still within attack range, do not move yet.
+            return;
+        }
+
+        // Chase down target.
+        _agent.SetDestination(target.transform.position);
     }
 
     private GameObject GetPlayerIfDetected()
@@ -117,7 +116,7 @@ public abstract class ErromiteController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator<WaitForSeconds> GetAttackCoroutine()
+    private IEnumerator<WaitForSeconds> GetAttackCoroutine(GameObject target)
     {
         yield return new WaitForSeconds(attackWindup);
 
@@ -125,7 +124,7 @@ public abstract class ErromiteController : MonoBehaviour
 
         while (true)
         {
-            Attack(_target, attackDamage);
+            Attack(target, attackDamage);
             yield return cooldownTime;
         }
     }
