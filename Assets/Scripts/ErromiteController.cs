@@ -16,6 +16,7 @@ public abstract class ErromiteController : MonoBehaviour
     private Collider _patchGeneratorCollider;
     private Collider _playerCollider;
     private NavMeshAgent _agent;
+    private GameObject _target;
 
     protected abstract void Attack(GameObject target, int damage);
 
@@ -49,7 +50,8 @@ public abstract class ErromiteController : MonoBehaviour
                 // Target is within attack range, stop moving and attack.
                 _agent.isStopped = true;
                 _agent.velocity = Vector2.zero;
-                _attackCoroutine = GetAttackCoroutine(target);
+                _target = target;
+                _attackCoroutine = GetAttackCoroutine();
                 StartCoroutine(_attackCoroutine);
                 return;
             }
@@ -59,6 +61,7 @@ public abstract class ErromiteController : MonoBehaviour
             // Target is outside of attack range, stop attacking and chase.
             StopCoroutine(_attackCoroutine);
             _attackCoroutine = null;
+            _target = null;
             _agent.isStopped = false;
         }
         else
@@ -116,7 +119,7 @@ public abstract class ErromiteController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator<WaitForSeconds> GetAttackCoroutine(GameObject target)
+    private IEnumerator<WaitForSeconds> GetAttackCoroutine()
     {
         yield return new WaitForSeconds(attackWindup);
 
@@ -124,7 +127,7 @@ public abstract class ErromiteController : MonoBehaviour
 
         while (true)
         {
-            Attack(target, attackDamage);
+            Attack(_target, attackDamage);
             yield return cooldownTime;
         }
     }
