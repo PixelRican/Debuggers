@@ -68,6 +68,7 @@ public abstract class ErromiteController : MonoBehaviour
         else
         {
             // Target is still within attack range, do not move yet.
+            _target = target;
             return;
         }
 
