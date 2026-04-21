@@ -4,12 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class DebuggerController : MonoBehaviour
 {
-    private void Awake()
+    private void OnEnable()
     {
         GetComponent<HealthController>().HealthDepleted += OnHealthDepleted;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
     }

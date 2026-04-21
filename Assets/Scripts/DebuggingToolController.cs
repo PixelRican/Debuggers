@@ -9,12 +9,12 @@ public sealed class DebuggingToolController : MonoBehaviour
     [SerializeField] private InputActionAsset action;
     [SerializeField] private int damage;
 
-    private void Start()
+    private void OnEnable()
     {
         action[ActionPath].performed += OnPerformed;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         action[ActionPath].performed -= OnPerformed;
     }

@@ -3,12 +3,12 @@ using UnityEngine.SceneManagement;
 
 public sealed class PatchGeneratorController : MonoBehaviour
 {
-    private void Awake()
+    private void OnEnable()
     {
         GetComponent<HealthController>().HealthDepleted += OnHealthDepleted;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
     }
@@ -17,7 +17,7 @@ public sealed class PatchGeneratorController : MonoBehaviour
     {
         if (sender.Health == 0)
         {
-            Destroy(gameObject);
+            enabled = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
