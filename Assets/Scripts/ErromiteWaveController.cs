@@ -25,7 +25,7 @@ public class ErromiteWaveController : MonoBehaviour
         get => _erromiteWaveSize;
     }
 
-    public event Action<ErromiteWaveController> ErromitesDefeated;
+    public event Action<ErromiteWaveController> ErromiteDestroyed;
 
     private void OnEnable()
     {
@@ -59,6 +59,7 @@ public class ErromiteWaveController : MonoBehaviour
         {
             _erromitesRemaining--;
             sender.HealthDepleted -= OnErromiteDamaged;
+            ErromiteDestroyed?.Invoke(this);
         }
     }
 
@@ -81,7 +82,6 @@ public class ErromiteWaveController : MonoBehaviour
 
                 if (nextWaveIndex >= waves.Length)
                 {
-                    ErromitesDefeated?.Invoke(this);
                     yield break;
                 }
 
