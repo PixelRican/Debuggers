@@ -12,6 +12,20 @@ public class ErromiteWaveController : MonoBehaviour
     private WaveEntry _currentWave;
     private int _waveIndex;
     private int _spawnIndex;
+    private int _erromitesRemaining;
+    private int _erromiteWaveSize;
+
+    public int ErromitesRemaining
+    {
+        get => _erromitesRemaining;
+    }
+
+    public int ErromiteWaveSize
+    {
+        get => _erromiteWaveSize;
+    }
+
+    public event Action<ErromiteWaveController> ErromitesDefeated;
 
     private void OnEnable()
     {
@@ -30,6 +44,8 @@ public class ErromiteWaveController : MonoBehaviour
         _spawnCoroutine = null;
         _patchGeneratorHealth.HealthDepleted -= OnPatchGeneratorDamaged;
         _patchGeneratorHealth = null;
+        _erromitesRemaining = 0;
+        _erromiteWaveSize = 0;
     }
 
     private void OnPatchGeneratorDamaged(HealthController sender)
@@ -37,10 +53,20 @@ public class ErromiteWaveController : MonoBehaviour
         enabled = sender.Health > 0;
     }
 
-    private IEnumerator<WaitForSeconds> GetSpawnCoroutine()
+    private void OnErromiteDamaged(HealthController sender)
+    {
+        if (sender.Health == 0)
+        {
+            _erromitesRemaining--;
+            sender.HealthDepleted -= OnErromiteDamaged;
+        }
+    }
+
+    private IEnumerator<object> GetSpawnCoroutine()
     {
         WaitForSeconds waveTime = new WaitForSeconds(waveDowntime);
         WaitForSeconds spawnTime = new WaitForSeconds(spawnRate);
+        WaitUntil nextWaveCondition = new WaitUntil(() => _erromitesRemaining == 0);
 
         while (true)
         {
@@ -49,15 +75,19 @@ public class ErromiteWaveController : MonoBehaviour
 
             if (nextSpawnIndex >= _currentWave.Spawns.Length)
             {
+                yield return nextWaveCondition;
+
                 int nextWaveIndex = _waveIndex + 1;
 
                 if (nextWaveIndex >= waves.Length)
                 {
+                    ErromitesDefeated?.Invoke(this);
                     yield break;
                 }
 
                 nextSpawnIndex = 0;
                 wave = _currentWave = waves[nextWaveIndex];
+                _erromitesRemaining = _erromiteWaveSize = wave.Spawns.Length;
                 _waveIndex = nextWaveIndex;
 
                 if (nextWaveIndex > 0)
@@ -70,7 +100,8 @@ public class ErromiteWaveController : MonoBehaviour
                 }
             }
 
-            wave.Spawns[nextSpawnIndex].Spawn();
+            GameObject erromite = wave.Spawns[nextSpawnIndex].Spawn();
+            erromite.GetComponent<HealthController>().HealthDepleted += OnErromiteDamaged;
             _spawnIndex = nextSpawnIndex;
             yield return spawnTime;
         }
