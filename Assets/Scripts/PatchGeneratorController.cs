@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,9 +13,12 @@ public sealed class PatchGeneratorController : MonoBehaviour
         GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
     }
 
-    private void OnHealthDepleted(object sender, EventArgs args)
+    private void OnHealthDepleted(HealthController sender)
     {
-        Destroy(gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (sender.Health == 0)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

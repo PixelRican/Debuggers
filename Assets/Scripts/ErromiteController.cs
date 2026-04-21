@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
@@ -113,17 +112,18 @@ public abstract class ErromiteController : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject obj = Instantiate(soulPrefab, transform.position, Quaternion.identity);
-
-        FloatToTarget mover = obj.GetComponent<FloatToTarget>();
-        mover.target = _patchGeneratorCollider.gameObject.transform;
-
         GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
     }
 
-    private void OnHealthDepleted(object sender, EventArgs args)
+    private void OnHealthDepleted(HealthController sender)
     {
-        Destroy(gameObject);
+        if (sender.Health == 0)
+        {
+            GameObject obj = Instantiate(soulPrefab, transform.position, Quaternion.identity);
+            FloatToTarget mover = obj.GetComponent<FloatToTarget>();
+            mover.target = _patchGeneratorCollider.gameObject.transform;
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator<WaitForSeconds> GetAttackCoroutine()

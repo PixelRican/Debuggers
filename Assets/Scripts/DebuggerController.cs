@@ -14,8 +14,11 @@ public class DebuggerController : MonoBehaviour
         GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
     }
 
-    private static void OnHealthDepleted(object sender, EventArgs args)
+    private static void OnHealthDepleted(HealthController sender)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (sender.Health == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

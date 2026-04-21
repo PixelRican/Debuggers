@@ -19,7 +19,7 @@ public class ErromiteWaveController : MonoBehaviour
         _waveIndex = -1;
         _spawnIndex = -1;
         _patchGeneratorHealth = GameObject.FindWithTag("PatchGenerator").GetComponent<HealthController>();
-        _patchGeneratorHealth.HealthDepleted += OnPatchGeneratorDestroyed;
+        _patchGeneratorHealth.HealthDepleted += OnPatchGeneratorDamaged;
         _spawnCoroutine = GetSpawnCoroutine();
         StartCoroutine(_spawnCoroutine);
     }
@@ -28,13 +28,13 @@ public class ErromiteWaveController : MonoBehaviour
     {
         StopCoroutine(_spawnCoroutine);
         _spawnCoroutine = null;
-        _patchGeneratorHealth.HealthDepleted -= OnPatchGeneratorDestroyed;
+        _patchGeneratorHealth.HealthDepleted -= OnPatchGeneratorDamaged;
         _patchGeneratorHealth = null;
     }
 
-    private void OnPatchGeneratorDestroyed(object sender, EventArgs e)
+    private void OnPatchGeneratorDamaged(HealthController sender)
     {
-        enabled = false;
+        enabled = sender.Health > 0;
     }
 
     private IEnumerator<WaitForSeconds> GetSpawnCoroutine()
