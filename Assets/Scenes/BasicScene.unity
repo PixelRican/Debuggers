@@ -386,7 +386,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  - {fileID: -876546973899608171, guid: 124c112a6e8f1a54e8b0870e881b56d8, type: 3}
+  - {fileID: 2100000, guid: 43672be0899539340ba6ac5db322693c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -516,7 +516,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  - {fileID: -876546973899608171, guid: 124c112a6e8f1a54e8b0870e881b56d8, type: 3}
+  - {fileID: 2100000, guid: 43672be0899539340ba6ac5db322693c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -835,7 +835,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  - {fileID: -876546973899608171, guid: 124c112a6e8f1a54e8b0870e881b56d8, type: 3}
+  - {fileID: 2100000, guid: 43672be0899539340ba6ac5db322693c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2023,7 +2023,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  - {fileID: -876546973899608171, guid: 124c112a6e8f1a54e8b0870e881b56d8, type: 3}
+  - {fileID: 2100000, guid: 43672be0899539340ba6ac5db322693c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2254,16 +2254,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Controls:
-
-    Walk: Joystick
-
-    Fire Laser:  Right Trigger
-
-    Place
-    Patch Generator: Right Grip
-
-    Jump: Primary'
+  m_text: "             Controls\n          Walk    Move Joysticks\n         Place   
+    Press Grip\n         Shoot    Press Right Trigger\nOpen Menu    Hold Left Trigger"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3520,16 +3512,16 @@ SceneRoots:
   - {fileID: 1249617921}
   - {fileID: 1807026948}
   - {fileID: 1493044691}
-  - {fileID: 223486418}
-  - {fileID: 306057745}
-  - {fileID: 1443748796}
-  - {fileID: 113672414}
   - {fileID: 1032692891}
   - {fileID: 1918235136}
   - {fileID: 1800167406}
   - {fileID: 944491312}
   - {fileID: 517700168}
   - {fileID: 322484288}
+  - {fileID: 223486418}
+  - {fileID: 306057745}
+  - {fileID: 1443748796}
+  - {fileID: 113672414}
   - {fileID: 1601431684}
   - {fileID: 1604029085}
   - {fileID: 816456025}
