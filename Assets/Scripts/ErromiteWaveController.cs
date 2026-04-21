@@ -8,7 +8,7 @@ public class ErromiteWaveController : MonoBehaviour
     [SerializeField] private float spawnRate;
     [SerializeField] private WaveEntry[] waves;
     private HealthController _patchGeneratorHealth;
-    private IEnumerator<WaitForSeconds> _spawnCoroutine;
+    private IEnumerator<object> _spawnCoroutine;
     private WaveEntry _currentWave;
     private int _waveIndex;
     private int _spawnIndex;
