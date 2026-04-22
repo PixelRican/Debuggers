@@ -6,6 +6,7 @@ public sealed class DebuggingToolController : MonoBehaviour
     private const string ActionPath = "XRI Right Interaction/Activate";
 
     [SerializeField] private GameObject laserPrefab;
+    [SerializeField] private Transform muzzleTransform;
     [SerializeField] private InputActionAsset action;
     [SerializeField] private int damage;
 
@@ -21,11 +22,11 @@ public sealed class DebuggingToolController : MonoBehaviour
 
     private void OnPerformed(InputAction.CallbackContext obj)
     {
-        Transform transform = this.transform;
-        Vector3 start = transform.position;
+        Transform muzzle = muzzleTransform;
+        Vector3 start = muzzle.position;
         Vector3 end;
 
-        if (Physics.Raycast(start, transform.forward, out RaycastHit hit))
+        if (Physics.Raycast(start, muzzle.forward, out RaycastHit hit))
         {
             GameObject target = hit.collider.gameObject;
 
@@ -38,10 +39,10 @@ public sealed class DebuggingToolController : MonoBehaviour
         }
         else
         {
-            end = start + transform.forward * 100.0f;
+            end = start + muzzle.forward * 100.0f;
         }
 
-        GameObject laser = Instantiate(laserPrefab, (start + end) * 0.5f, transform.rotation * Quaternion.Euler(90, 0, 0));
+        GameObject laser = Instantiate(laserPrefab, (start + end) * 0.5f, muzzle.rotation * Quaternion.Euler(90, 0, 0));
         Vector3 scale = laser.transform.localScale;
         scale.y = (start - end).magnitude * 0.5f;
         laser.transform.localScale = scale;
