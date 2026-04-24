@@ -24,7 +24,7 @@ public sealed class HealthController : MonoBehaviour
         HealthDepleted?.Invoke(this);
     }
 
-    private void Start()
+    private void Awake()
     {
         health = maxHealth;
     }

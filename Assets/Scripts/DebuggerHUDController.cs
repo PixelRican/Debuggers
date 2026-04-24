@@ -12,7 +12,7 @@ public class DebuggerHUDController : MonoBehaviour
     [SerializeField] private ErromiteWaveController erromiteWaveController;
     [SerializeField] private Slider debuggerHealthSlider;
     [SerializeField] private Slider patchGeneratorHealthSlider;
-    [SerializeField] private Slider erromiteWaveSlider;
+    [SerializeField] private Slider erromiteWaveProgressSlider;
 
     private void Awake()
     {
@@ -31,17 +31,23 @@ public class DebuggerHUDController : MonoBehaviour
     {
         debuggerHealthController.HealthDepleted += UpdateDebuggerHealthSlider;
         patchGeneratorHealthController.HealthDepleted += UpdatePatchGeneratorHealthSlider;
-        erromiteWaveController.ErromiteDestroyed += UpdateErromiteWaveSlider;
-        UpdateDebuggerHealthSlider(debuggerHealthController);
-        UpdatePatchGeneratorHealthSlider(patchGeneratorHealthController);
-        UpdateErromiteWaveSlider(erromiteWaveController);
+        erromiteWaveController.WaveInitiated += UpdateErromiteWaveProgressSlider;
+        erromiteWaveController.ErromiteDestroyed += UpdateErromiteWaveProgressSlider;
+
+        if (erromiteWaveController.Started)
+        {
+            UpdateDebuggerHealthSlider(debuggerHealthController);
+            UpdatePatchGeneratorHealthSlider(patchGeneratorHealthController);
+            UpdateErromiteWaveProgressSlider(erromiteWaveController);
+        }
     }
 
     private void OnDisable()
     {
         debuggerHealthController.HealthDepleted -= UpdateDebuggerHealthSlider;
         patchGeneratorHealthController.HealthDepleted -= UpdatePatchGeneratorHealthSlider;
-        erromiteWaveController.ErromiteDestroyed -= UpdateErromiteWaveSlider;
+        erromiteWaveController.ErromiteDestroyed -= UpdateErromiteWaveProgressSlider;
+        erromiteWaveController.WaveInitiated -= UpdateErromiteWaveProgressSlider;
     }
 
     private void UpdateDebuggerHealthSlider(HealthController sender)
@@ -54,9 +60,9 @@ public class DebuggerHUDController : MonoBehaviour
         patchGeneratorHealthSlider.value = (float)sender.Health / sender.MaxHealth;
     }
 
-    private void UpdateErromiteWaveSlider(ErromiteWaveController sender)
+    private void UpdateErromiteWaveProgressSlider(ErromiteWaveController sender)
     {
-        erromiteWaveSlider.value = (float)sender.ErromitesRemaining / sender.ErromiteWaveSize;
+        erromiteWaveProgressSlider.value = 1.0f - (float)sender.ErromitesRemaining / sender.ErromiteWaveSize;
     }
 
     private void OnActiveChange(InputAction.CallbackContext obj)

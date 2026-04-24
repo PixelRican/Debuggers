@@ -15,6 +15,11 @@ public class ErromiteWaveController : MonoBehaviour
     private int _erromitesRemaining;
     private int _erromiteWaveSize;
 
+    public bool Started
+    {
+        get => _spawnCoroutine != null;
+    }
+
     public int ErromitesRemaining
     {
         get => _erromitesRemaining;
@@ -25,7 +30,11 @@ public class ErromiteWaveController : MonoBehaviour
         get => _erromiteWaveSize;
     }
 
+    public event Action<ErromiteWaveController> WaveInitiated;
+
     public event Action<ErromiteWaveController> ErromiteDestroyed;
+
+    public event Action<ErromiteWaveController> GameCompleted;
 
     private void OnEnable()
     {
@@ -82,6 +91,7 @@ public class ErromiteWaveController : MonoBehaviour
 
                 if (nextWaveIndex >= waves.Length)
                 {
+                    GameCompleted?.Invoke(this);
                     yield break;
                 }
 
@@ -103,6 +113,12 @@ public class ErromiteWaveController : MonoBehaviour
             GameObject erromite = wave.Spawns[nextSpawnIndex].Spawn();
             erromite.GetComponent<HealthController>().HealthDepleted += OnErromiteDamaged;
             _spawnIndex = nextSpawnIndex;
+
+            if (nextSpawnIndex == 0)
+            {
+                WaveInitiated?.Invoke(this);
+            }
+
             yield return spawnTime;
         }
     }
