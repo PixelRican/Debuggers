@@ -39,6 +39,7 @@ public abstract class ErromiteController : MonoBehaviour
 
         // ゴゴゴ Stare down the target menacingly ゴゴゴ
         transform.LookAt(target.transform);
+        transform.Rotate(0, 90.0f, 0);
         float distance = Vector3.Distance(transform.position, target.transform.position);
 
         // Determine whether the erromite is currently attacking its target.

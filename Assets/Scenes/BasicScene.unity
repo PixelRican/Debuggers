@@ -1029,31 +1029,11 @@ MonoBehaviour:
   waves:
   - Spawns:
     - Location: {fileID: 669892837}
-      Prefab: {fileID: 4446927468426457508, guid: 258aba5d524273845af036c95f49f311, type: 3}
+      Prefab: {fileID: 4873693582065550344, guid: 4f20d2db0ae144e49974d61cf1ac008d, type: 3}
     - Location: {fileID: 1646370733}
-      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
+      Prefab: {fileID: 9189399396835518419, guid: 0cb439d628b81d94f87d3acb8ebacb23, type: 3}
     - Location: {fileID: 1767839428}
-      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
-    - Location: {fileID: 278750384}
-      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
-  - Spawns:
-    - Location: {fileID: 669892837}
-      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
-    - Location: {fileID: 1646370733}
-      Prefab: {fileID: 4446927468426457508, guid: cf7a5d72305374e43ad57536f5643b78, type: 3}
-    - Location: {fileID: 1767839428}
-      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
-    - Location: {fileID: 278750384}
-      Prefab: {fileID: 4446927468426457508, guid: cf7a5d72305374e43ad57536f5643b78, type: 3}
-  - Spawns:
-    - Location: {fileID: 669892837}
-      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
-    - Location: {fileID: 1646370733}
-      Prefab: {fileID: 4446927468426457508, guid: cf7a5d72305374e43ad57536f5643b78, type: 3}
-    - Location: {fileID: 1767839428}
-      Prefab: {fileID: 6652554109054403229, guid: 6b518f99c38fac847b4d609064e33f26, type: 3}
-    - Location: {fileID: 278750384}
-      Prefab: {fileID: 4446927468426457508, guid: 258aba5d524273845af036c95f49f311, type: 3}
+      Prefab: {fileID: 9041182834764972456, guid: 046bcce4c389614478d3cdd88d354b03, type: 3}
 --- !u!4 &517700168
 Transform:
   m_ObjectHideFlags: 0
