@@ -2,12 +2,11 @@
 
 public sealed class MeleeErromiteController : ErromiteController
 {
+    [SerializeField] private ParticleSystem attackParticles;
+
     protected override void Attack(GameObject target, int damage)
     {
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        Destroy(sphere.GetComponent<Collider>());
-        Destroy(sphere, 1.0f);
-        sphere.transform.position = target.transform.position;
+        Instantiate(attackParticles, target.transform.position, Quaternion.identity);
         target.GetComponent<HealthController>().TakeDamage(damage);
     }
 }

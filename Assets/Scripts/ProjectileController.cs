@@ -2,6 +2,7 @@
 
 public class ProjectileController : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem collisionParticles;
     [SerializeField] private float speed;
     private int _damage;
 
@@ -19,7 +20,8 @@ public class ProjectileController : MonoBehaviour
         {
             health.TakeDamage(_damage);
         }
-
+        
+        Instantiate(collisionParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

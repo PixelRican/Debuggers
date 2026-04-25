@@ -235,3 +235,4 @@ MonoBehaviour:
   ignoreMask:
     serializedVersion: 2
     m_Bits: 384
+  attackParticles: {fileID: 7256043629162951544, guid: f6165ff5fecac494fa4b40caddd131ed, type: 3}
