@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - PatchGenerator
   - ErromiteWave
+  - EnergyOrb
   layers:
   - Default
   - TransparentFX
