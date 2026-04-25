@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4443255725101531760}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4634042992670104834}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Corridor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 8604802579931697638}
   - component: {fileID: 7481101861403624206}
   - component: {fileID: 398271444314222131}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 4102049065706628550}
   - component: {fileID: 5005431622371932172}
   - component: {fileID: 3890513527028901532}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 1537841060848695137}
   - component: {fileID: 2147009760361153265}
   - component: {fileID: 5112474722898936172}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8841749866182615824}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Connector 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 7391907059697700821}
   - component: {fileID: 5717618338301439154}
   - component: {fileID: 1390596534833153269}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 1800647191805967754}
   - component: {fileID: 7946121539617589144}
   - component: {fileID: 8036848206926738634}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Overhang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 4968374826194216871}
   - component: {fileID: 6853193017323425265}
   - component: {fileID: 1394661416442276216}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6212414243672104525}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 2445485837091156707}
   - component: {fileID: 6416841959933648828}
   - component: {fileID: 6924496308932206718}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,7 +930,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3365701656008074813}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Connector 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 8909720816098266134}
   - component: {fileID: 2273778198474341562}
   - component: {fileID: 3214240514231381838}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 3700547166522660568}
   - component: {fileID: 946466205157505802}
   - component: {fileID: 6488906850950396009}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 6791257728949252116}
   - component: {fileID: 849831168402623054}
   - component: {fileID: 5371821633965320133}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,7 +1303,7 @@ GameObject:
   - component: {fileID: 1890681093398674607}
   - component: {fileID: 8239317861799835433}
   - component: {fileID: 8804568268425929116}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,7 +1414,7 @@ GameObject:
   - component: {fileID: 7728123608984267434}
   - component: {fileID: 1351304092134631292}
   - component: {fileID: 2190488292421976163}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

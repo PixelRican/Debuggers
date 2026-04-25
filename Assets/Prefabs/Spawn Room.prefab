@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2974991428181690495}
   - component: {fileID: 1093029114224475639}
   - component: {fileID: 5908625492778452004}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 2567277693903818215}
   - component: {fileID: 6915027073873446416}
   - component: {fileID: 6557566295682010559}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Overhang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 2473057015751919365}
   - component: {fileID: 1984420951814387669}
   - component: {fileID: 5755591744456399011}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6343839819657871955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Spawn Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2711405953641155830}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5512314516382007511}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 1416536437711292957}
   - component: {fileID: 4846302749433896348}
   - component: {fileID: 2998770229863227310}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 2641156489722285191}
   - component: {fileID: 7471224588952013985}
   - component: {fileID: 8336573225255073448}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 799815230618494728}
   - component: {fileID: 8290539309183821768}
   - component: {fileID: 6850893433043464586}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +786,7 @@ GameObject:
   - component: {fileID: 4951144799339174053}
   - component: {fileID: 3952209123552811826}
   - component: {fileID: 8956916827515831354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

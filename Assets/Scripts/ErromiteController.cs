@@ -36,7 +36,7 @@ public abstract class ErromiteController : MonoBehaviour
     private void Update()
     {
         // Target the player when detected. Otherwise, target the patch generator.
-        GameObject target = playerDetectionRadius > 0.0f ? GetPlayerIfDetected() : _patchGeneratorCollider.gameObject;
+        GameObject target = GetTarget();
 
         // ゴゴゴ Stare down the target menacingly ゴゴゴ
         transform.LookAt(target.transform);
@@ -77,8 +77,13 @@ public abstract class ErromiteController : MonoBehaviour
         _agent.SetDestination(target.transform.position);
     }
 
-    private GameObject GetPlayerIfDetected()
+    private GameObject GetTarget()
     {
+        if (Vector3.Distance(transform.position, _playerCollider.transform.position) > playerDetectionRadius)
+        {
+            return _patchGeneratorCollider.gameObject;
+        }
+
         int pointsHidden = 0;
         Bounds bounds = _playerCollider.bounds;
         NativeArray<Vector3> points = new NativeArray<Vector3>(8, Allocator.Temp);
@@ -98,7 +103,7 @@ public abstract class ErromiteController : MonoBehaviour
 
             // Cast a ray at point and determine whether an obstacle is in the way.
             if (Physics.Raycast(origin, point - origin, out RaycastHit hit, playerDetectionRadius, ~ignoreMask) &&
-                Vector3.Distance(origin, hit.point) < Vector3.Distance(origin, point))
+                (Vector3.Distance(origin, hit.point) < Vector3.Distance(origin, point)))
             {
                 // Count the number of points that are blocked by obstacles.
                 pointsHidden++;
@@ -109,7 +114,12 @@ public abstract class ErromiteController : MonoBehaviour
         points.Dispose();
 
         // Target the player when they are within line of sight; otherwise, target the patch generator.
-        return (pointsHidden < points.Length ? _playerCollider : _patchGeneratorCollider).gameObject;
+        if (pointsHidden < points.Length)
+        {
+            return _playerCollider.gameObject;
+        }
+
+        return _patchGeneratorCollider.gameObject;
     }
 
     private void OnDestroy()

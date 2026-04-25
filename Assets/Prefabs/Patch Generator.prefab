@@ -53,6 +53,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 285a197b2c49dc14eb1f974cd90edc85, type: 2}
     - target: {fileID: -4952262187572507765, guid: 85446aeebdb99cf498c7481e8b084f5d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4952262187572507765, guid: 85446aeebdb99cf498c7481e8b084f5d, type: 3}
       propertyPath: m_TagString
       value: EnergyOrb
       objectReference: {fileID: 0}
@@ -64,9 +68,17 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8678ee6025ab583448fb87840676d4f3, type: 2}
+    - target: {fileID: 424797892135438382, guid: 85446aeebdb99cf498c7481e8b084f5d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 85446aeebdb99cf498c7481e8b084f5d, type: 3}
       propertyPath: m_Name
       value: Patch Generator
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85446aeebdb99cf498c7481e8b084f5d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 85446aeebdb99cf498c7481e8b084f5d, type: 3}
       propertyPath: m_TagString

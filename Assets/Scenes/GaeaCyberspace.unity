@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 51722344}
   - component: {fileID: 51722343}
   - component: {fileID: 51722342}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: South West Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 750850844}
   - component: {fileID: 750850843}
   - component: {fileID: 750850842}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: South East Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1357,7 +1357,7 @@ GameObject:
   - component: {fileID: 1602763604}
   - component: {fileID: 1602763603}
   - component: {fileID: 1602763602}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: North East Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1894,7 +1894,7 @@ GameObject:
   - component: {fileID: 2104105281}
   - component: {fileID: 2104105280}
   - component: {fileID: 2104105279}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: North West Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
