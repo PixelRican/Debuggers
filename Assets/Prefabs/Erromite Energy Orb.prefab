@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8618094772751026063}
   - component: {fileID: -4487228162637760466}
   m_Layer: 3
-  m_Name: Erromite Soul
+  m_Name: Erromite Energy Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 29048254ac014fd46a1a8684451bffd8, type: 2}
+  - {fileID: 2100000, guid: 285a197b2c49dc14eb1f974cd90edc85, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

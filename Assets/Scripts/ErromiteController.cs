@@ -11,7 +11,7 @@ public abstract class ErromiteController : MonoBehaviour
     [SerializeField] private float minimumAttackRange;
     [SerializeField] private float maximumAttackRange;
     [SerializeField] private float playerDetectionRadius;
-    [SerializeField] private GameObject soulPrefab;
+    [SerializeField] private GameObject energyOrbPrefab;
     private IEnumerator<WaitForSeconds> _attackCoroutine;
     private Collider _patchGeneratorCollider;
     private Collider _playerCollider;
@@ -121,7 +121,7 @@ public abstract class ErromiteController : MonoBehaviour
     {
         if (sender.Health == 0)
         {
-            GameObject obj = Instantiate(soulPrefab, transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(energyOrbPrefab, transform.position, Quaternion.identity);
             FloatToTarget mover = obj.GetComponent<FloatToTarget>();
             mover.target = _patchGeneratorCollider.gameObject.transform;
             Destroy(gameObject);
