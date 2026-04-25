@@ -123,7 +123,7 @@ public abstract class ErromiteController : MonoBehaviour
         {
             GameObject obj = Instantiate(energyOrbPrefab, transform.position, Quaternion.identity);
             FloatToTarget mover = obj.GetComponent<FloatToTarget>();
-            mover.target = _patchGeneratorCollider.gameObject.transform;
+            mover.SetTarget(GameObject.FindGameObjectWithTag("EnergyOrb"));
             Destroy(gameObject);
         }
     }

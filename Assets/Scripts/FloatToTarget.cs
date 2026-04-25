@@ -2,21 +2,26 @@ using UnityEngine;
 
 public class FloatToTarget : MonoBehaviour
 {
-    public Transform target;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float stopDistance = 0.2f;
+    private Transform _target;
 
-    void Update()
+    public void SetTarget(GameObject target)
     {
-        if (target == null) return;
+        _target = target.transform;
+    }
+
+    private void Update()
+    {
+        if (_target is null) return;
 
         transform.position = Vector3.MoveTowards(
             transform.position,
-            target.position,
+            _target.position,
             speed * Time.deltaTime
         );
 
-        if (Vector3.Distance(transform.position, target.position) <= stopDistance)
+        if (Vector3.Distance(transform.position, _target.position) <= stopDistance)
         {
             Destroy(gameObject);
         }
