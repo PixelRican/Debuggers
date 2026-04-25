@@ -612,13 +612,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2247406071234789584, guid: 03e9a6d8458688346bbf1b02f0cafed9, type: 3}
+      propertyPath: erromiteWaveController
+      value: 
+      objectReference: {fileID: 517700167}
     - target: {fileID: 5991853762948448722, guid: 03e9a6d8458688346bbf1b02f0cafed9, type: 3}
       propertyPath: m_Name
       value: Patch Generator
       objectReference: {fileID: 0}
     - target: {fileID: 5991853762948448722, guid: 03e9a6d8458688346bbf1b02f0cafed9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6371617024062331752, guid: 03e9a6d8458688346bbf1b02f0cafed9, type: 3}
       propertyPath: m_LocalPosition.x

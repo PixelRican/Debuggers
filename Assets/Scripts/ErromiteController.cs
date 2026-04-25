@@ -24,7 +24,7 @@ public abstract class ErromiteController : MonoBehaviour
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        GetComponent<HealthController>().HealthDepleted += OnHealthDepleted;
+        GetComponent<HealthController>().HealthChanged += OnHealthChanged;
     }
 
     private void Start()
@@ -124,10 +124,10 @@ public abstract class ErromiteController : MonoBehaviour
 
     private void OnDestroy()
     {
-        GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
+        GetComponent<HealthController>().HealthChanged -= OnHealthChanged;
     }
 
-    private void OnHealthDepleted(HealthController sender)
+    private void OnHealthChanged(HealthController sender)
     {
         if (sender.Health == 0)
         {

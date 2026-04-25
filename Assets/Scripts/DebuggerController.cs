@@ -17,15 +17,15 @@ public class DebuggerController : MonoBehaviour
 
     private void OnEnable()
     {
-        healthController.HealthDepleted += OnHealthDepleted;
+        healthController.HealthChanged += OnHealthChanged;
     }
 
     private void OnDisable()
     {
-        healthController.HealthDepleted -= OnHealthDepleted;
+        healthController.HealthChanged -= OnHealthChanged;
     }
 
-    private void OnHealthDepleted(HealthController sender)
+    private void OnHealthChanged(HealthController sender)
     {
         if (sender.Health == 0)
         {

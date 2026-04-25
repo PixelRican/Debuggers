@@ -32,6 +32,8 @@ public class ErromiteWaveController : MonoBehaviour
 
     public event Action<ErromiteWaveController> WaveInitiated;
 
+    public event Action<ErromiteWaveController> WaveCompleted;
+
     public event Action<ErromiteWaveController> ErromiteDestroyed;
 
     public event Action<ErromiteWaveController> GameCompleted;
@@ -42,7 +44,7 @@ public class ErromiteWaveController : MonoBehaviour
         _waveIndex = -1;
         _spawnIndex = -1;
         _patchGeneratorHealth = GameObject.FindWithTag("PatchGenerator").GetComponent<HealthController>();
-        _patchGeneratorHealth.HealthDepleted += OnPatchGeneratorDamaged;
+        _patchGeneratorHealth.HealthChanged += OnPatchGeneratorDamaged;
         _spawnCoroutine = GetSpawnCoroutine();
         StartCoroutine(_spawnCoroutine);
     }
@@ -51,7 +53,7 @@ public class ErromiteWaveController : MonoBehaviour
     {
         StopCoroutine(_spawnCoroutine);
         _spawnCoroutine = null;
-        _patchGeneratorHealth.HealthDepleted -= OnPatchGeneratorDamaged;
+        _patchGeneratorHealth.HealthChanged -= OnPatchGeneratorDamaged;
         _patchGeneratorHealth = null;
         _erromitesRemaining = 0;
         _erromiteWaveSize = 0;
@@ -66,9 +68,14 @@ public class ErromiteWaveController : MonoBehaviour
     {
         if (sender.Health == 0)
         {
-            _erromitesRemaining--;
-            sender.HealthDepleted -= OnErromiteDamaged;
+            int erromitesRemaining = --_erromitesRemaining;
+            sender.HealthChanged -= OnErromiteDamaged;
             ErromiteDestroyed?.Invoke(this);
+
+            if (erromitesRemaining == 0)
+            {
+                WaveCompleted?.Invoke(this);
+            }
         }
     }
 
@@ -111,7 +118,7 @@ public class ErromiteWaveController : MonoBehaviour
             }
 
             GameObject erromite = wave.Spawns[nextSpawnIndex].Spawn();
-            erromite.GetComponent<HealthController>().HealthDepleted += OnErromiteDamaged;
+            erromite.GetComponent<HealthController>().HealthChanged += OnErromiteDamaged;
             _spawnIndex = nextSpawnIndex;
 
             if (nextSpawnIndex == 0)

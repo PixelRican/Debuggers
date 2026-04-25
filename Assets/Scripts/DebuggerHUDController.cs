@@ -29,8 +29,8 @@ public class DebuggerHUDController : MonoBehaviour
 
     private void OnEnable()
     {
-        debuggerHealthController.HealthDepleted += UpdateDebuggerHealthSlider;
-        patchGeneratorHealthController.HealthDepleted += UpdatePatchGeneratorHealthSlider;
+        debuggerHealthController.HealthChanged += UpdateDebuggerHealthSlider;
+        patchGeneratorHealthController.HealthChanged += UpdatePatchGeneratorHealthSlider;
         erromiteWaveController.WaveInitiated += UpdateErromiteWaveProgressSlider;
         erromiteWaveController.ErromiteDestroyed += UpdateErromiteWaveProgressSlider;
 
@@ -44,8 +44,8 @@ public class DebuggerHUDController : MonoBehaviour
 
     private void OnDisable()
     {
-        debuggerHealthController.HealthDepleted -= UpdateDebuggerHealthSlider;
-        patchGeneratorHealthController.HealthDepleted -= UpdatePatchGeneratorHealthSlider;
+        debuggerHealthController.HealthChanged -= UpdateDebuggerHealthSlider;
+        patchGeneratorHealthController.HealthChanged -= UpdatePatchGeneratorHealthSlider;
         erromiteWaveController.ErromiteDestroyed -= UpdateErromiteWaveProgressSlider;
         erromiteWaveController.WaveInitiated -= UpdateErromiteWaveProgressSlider;
     }

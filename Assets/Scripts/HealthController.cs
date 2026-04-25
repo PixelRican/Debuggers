@@ -16,17 +16,18 @@ public sealed class HealthController : MonoBehaviour
         get => health;
     }
 
-    public event Action<HealthController> HealthDepleted;
+    public event Action<HealthController> HealthChanged;
 
     public void Reset()
     {
         health = maxHealth;
+        HealthChanged?.Invoke(this);
     }
 
     public void TakeDamage(int damage)
     {
         health = Math.Max(health - damage, 0);
-        HealthDepleted?.Invoke(this);
+        HealthChanged?.Invoke(this);
     }
 
     private void Awake()
