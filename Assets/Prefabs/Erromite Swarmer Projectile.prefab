@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4653156958001648430}
   - component: {fileID: 8603591462952103269}
   - component: {fileID: 6022466549565215814}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Erromite Swarmer Projectile
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 25
+    angle: 5
     length: 5
     boxThickness: {x: 1, y: 1, z: 1}
     radiusThickness: 1
@@ -4905,7 +4905,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9f264161715d64c4da676c026dc807c4, type: 2}
+  - {fileID: 2100000, guid: 2e44f739f4750ab4cac32b9c51b8adc0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

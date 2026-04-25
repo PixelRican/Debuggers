@@ -152,3 +152,6 @@ MonoBehaviour:
   maximumAttackRange: 3
   playerDetectionRadius: 0
   energyOrbPrefab: {fileID: 1174323007156943271, guid: 5749168948647e24e8babf7edf525482, type: 3}
+  ignoreMask:
+    serializedVersion: 2
+    m_Bits: 384

@@ -183,6 +183,9 @@ MonoBehaviour:
   muzzleTransform: {fileID: 2178660999652277343}
   action: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   damage: 10
+  ignoreMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!4 &2178660999652277343 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1300264252759386080, guid: b28dcfe95ff9d2341a9fe551d89a7b0d, type: 3}

@@ -9,6 +9,7 @@ public sealed class DebuggingToolController : MonoBehaviour
     [SerializeField] private Transform muzzleTransform;
     [SerializeField] private InputActionAsset action;
     [SerializeField] private int damage;
+    [SerializeField] private LayerMask ignoreMask;
 
     private void OnEnable()
     {
@@ -26,7 +27,7 @@ public sealed class DebuggingToolController : MonoBehaviour
         Vector3 start = muzzle.position;
         Vector3 end;
 
-        if (Physics.Raycast(start, muzzle.forward, out RaycastHit hit))
+        if (Physics.Raycast(start, muzzle.forward, out RaycastHit hit, 100.0f, ~ignoreMask))
         {
             GameObject target = hit.collider.gameObject;
 

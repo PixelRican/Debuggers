@@ -12,6 +12,7 @@ public abstract class ErromiteController : MonoBehaviour
     [SerializeField] private float maximumAttackRange;
     [SerializeField] private float playerDetectionRadius;
     [SerializeField] private GameObject energyOrbPrefab;
+    [SerializeField] private LayerMask ignoreMask;
     private IEnumerator<WaitForSeconds> _attackCoroutine;
     private Collider _patchGeneratorCollider;
     private Collider _playerCollider;
@@ -81,7 +82,6 @@ public abstract class ErromiteController : MonoBehaviour
         int pointsHidden = 0;
         Bounds bounds = _playerCollider.bounds;
         NativeArray<Vector3> points = new NativeArray<Vector3>(8, Allocator.Temp);
-        int mask = ~LayerMask.GetMask("Enemy");
         points[0] = bounds.min;
         points[1] = bounds.max;
         points[2] = new Vector3(bounds.min.x, bounds.min.y, bounds.max.z);
@@ -97,7 +97,7 @@ public abstract class ErromiteController : MonoBehaviour
             Vector3 origin = transform.position;
 
             // Cast a ray at point and determine whether an obstacle is in the way.
-            if (Physics.Raycast(origin, point - origin, out RaycastHit hit, playerDetectionRadius, mask) &&
+            if (Physics.Raycast(origin, point - origin, out RaycastHit hit, playerDetectionRadius, ~ignoreMask) &&
                 Vector3.Distance(origin, hit.point) < Vector3.Distance(origin, point))
             {
                 // Count the number of points that are blocked by obstacles.
