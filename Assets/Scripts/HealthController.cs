@@ -18,6 +18,11 @@ public sealed class HealthController : MonoBehaviour
 
     public event Action<HealthController> HealthDepleted;
 
+    public void Reset()
+    {
+        health = maxHealth;
+    }
+
     public void TakeDamage(int damage)
     {
         health = Math.Max(health - damage, 0);
@@ -26,6 +31,6 @@ public sealed class HealthController : MonoBehaviour
 
     private void Awake()
     {
-        health = maxHealth;
+        Reset();
     }
 }

@@ -160,8 +160,8 @@ MonoBehaviour:
   attackDamage: 15
   attackWindup: 0.5
   attackCooldown: 1
-  minimumAttackRange: 2
-  maximumAttackRange: 3
+  minimumAttackRange: 3
+  maximumAttackRange: 6
   playerDetectionRadius: 10
   energyOrbPrefab: {fileID: 1174323007156943271, guid: 5749168948647e24e8babf7edf525482, type: 3}
   ignoreMask:

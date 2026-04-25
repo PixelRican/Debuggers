@@ -1,23 +1,44 @@
+using System.Collections;
+using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class DebuggerController : MonoBehaviour
 {
+    [SerializeField] private XROrigin origin;
+    [SerializeField] private HealthController healthController;
+    [SerializeField] private Transform spawnTransform;
+
+    private IEnumerator Start()
+    {
+        yield return null;
+        yield return null;
+        TeleportToSpawn();
+    }
+
     private void OnEnable()
     {
-        GetComponent<HealthController>().HealthDepleted += OnHealthDepleted;
+        healthController.HealthDepleted += OnHealthDepleted;
     }
 
     private void OnDisable()
     {
-        GetComponent<HealthController>().HealthDepleted -= OnHealthDepleted;
+        healthController.HealthDepleted -= OnHealthDepleted;
     }
 
-    private static void OnHealthDepleted(HealthController sender)
+    private void OnHealthDepleted(HealthController sender)
     {
         if (sender.Health == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            sender.Reset();
+            TeleportToSpawn();
         }
+    }
+
+    private void TeleportToSpawn()
+    {
+        Transform originTransform = origin.transform;
+        Vector3 originPosition = originTransform.position;
+        Vector3 headOffset = origin.Camera.transform.position - originPosition;
+        originTransform.position = spawnTransform.position - headOffset;
     }
 }
