@@ -346,8 +346,8 @@ MonoBehaviour:
   attackDamage: 20
   attackWindup: 0.5
   attackCooldown: 2
-  minimumAttackRange: 5
-  maximumAttackRange: 10
+  minimumAttackRange: 10
+  maximumAttackRange: 20
   playerDetectionRadius: 20
   energyOrbPrefab: {fileID: 1174323007156943271, guid: 5749168948647e24e8babf7edf525482, type: 3}
   projectilePrefab: {fileID: 1174323007156943271, guid: 2210a01d6d96f2a43b90d9ba18385841, type: 3}
