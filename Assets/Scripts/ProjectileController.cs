@@ -9,7 +9,6 @@ public class ProjectileController : MonoBehaviour
     public void SetTarget(GameObject target, int damage)
     {
         Vector3 direction = target.transform.position - transform.position;
-        direction.y = 0.0f;
         GetComponent<Rigidbody>().linearVelocity = direction.normalized * speed;
         _damage = damage;
     }
@@ -20,7 +19,7 @@ public class ProjectileController : MonoBehaviour
         {
             health.TakeDamage(_damage);
         }
-        
+
         Instantiate(collisionParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

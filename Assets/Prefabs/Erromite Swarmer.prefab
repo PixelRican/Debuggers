@@ -368,6 +368,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7952821410986850193, guid: 25730bdcf12a88c42bd5d7f1e833e3ec, type: 3}
+      propertyPath: m_BaseOffset
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8400486576240679099, guid: 25730bdcf12a88c42bd5d7f1e833e3ec, type: 3}
       propertyPath: m_Layer
       value: 7
