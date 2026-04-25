@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4f72f47a6afb0a048a2a809f88f9a090, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -127,6 +127,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1509225319602873096, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509225319602873096, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1576320104085595306, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
       propertyPath: m_Name
       value: South East Room
@@ -298,13 +306,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299639867}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33079913, y: -0.0329763, z: 0.3034621, w: 0.8929699}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 37.647, y: 10.322, z: 41.066}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &299639870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +350,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1509225319602873096, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -4.656654e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509225319602873096, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.83e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509225319602873096, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1576320104085595306, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
       propertyPath: m_Name
       value: South West Room
@@ -534,6 +554,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1509225319602873096, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.0702148e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509225319602873096, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509225319602873096, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.3555836e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509225319602873096, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.5423301e+25
+      objectReference: {fileID: 0}
     - target: {fileID: 1576320104085595306, guid: d573c644ba08fa4418190a49426b92c7, type: 3}
       propertyPath: m_Name
       value: North East Room
@@ -652,6 +688,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1351304092134631292, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351304092134631292, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: NaN
+      objectReference: {fileID: 0}
     - target: {fileID: 1667717064696254994, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
       propertyPath: m_Name
       value: East Corridor
@@ -709,6 +753,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1351304092134631292, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.48e-42
+      objectReference: {fileID: 0}
     - target: {fileID: 1667717064696254994, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
       propertyPath: m_Name
       value: North Corridor
@@ -1007,6 +1055,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1351304092134631292, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351304092134631292, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 9.2557e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351304092134631292, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: NaN
+      objectReference: {fileID: 0}
     - target: {fileID: 1667717064696254994, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
       propertyPath: m_Name
       value: South Corridor
@@ -1802,6 +1862,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1351304092134631292, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.48e-42
+      objectReference: {fileID: 0}
     - target: {fileID: 1667717064696254994, guid: 010482dc10120de4ba3ccd433ee0f176, type: 3}
       propertyPath: m_Name
       value: West Corridor
