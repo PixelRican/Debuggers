@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9b4859734ffa8cc46b1b9e022fd984eb, type: 2}
     - target: {fileID: 1746408104103044121, guid: 25730bdcf12a88c42bd5d7f1e833e3ec, type: 3}
       propertyPath: maxHealth
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1914617517154956527, guid: 25730bdcf12a88c42bd5d7f1e833e3ec, type: 3}
       propertyPath: m_Layer
@@ -230,7 +230,7 @@ MonoBehaviour:
   attackCooldown: 1
   minimumAttackRange: 3
   maximumAttackRange: 6
-  playerDetectionRadius: 10
+  playerDetectionRadius: 15
   energyOrbPrefab: {fileID: 1174323007156943271, guid: 5749168948647e24e8babf7edf525482, type: 3}
   ignoreMask:
     serializedVersion: 2
