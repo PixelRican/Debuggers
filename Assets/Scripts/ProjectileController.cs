@@ -15,11 +15,14 @@ public class ProjectileController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent(out HealthController health))
+        if (!other.gameObject.CompareTag("Enemy"))
         {
-            health.TakeDamage(_damage);
-        }
+            if (other.gameObject.TryGetComponent(out HealthController health))
+            {
+                health.TakeDamage(_damage);
+            }
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3534573503053268959}
   - component: {fileID: 8618094772751026063}
   - component: {fileID: -4487228162637760466}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Erromite Soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
