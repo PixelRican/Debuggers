@@ -361,7 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6343839819657871955}
   m_Layer: 3
-  m_Name: Corner Room
+  m_Name: Storage Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,12 +387,12 @@ Transform:
   - {fileID: 4047528252959875719}
   - {fileID: 6552879596232601874}
   - {fileID: 8752964262530814593}
-  - {fileID: 1624483521639629969}
-  - {fileID: 4291806530586108700}
-  - {fileID: 861015241722913629}
   - {fileID: 6126564038033351557}
-  - {fileID: 6878243248191994311}
+  - {fileID: 861015241722913629}
+  - {fileID: 4291806530586108700}
+  - {fileID: 1624483521639629969}
   - {fileID: 3047215031784484622}
+  - {fileID: 6878243248191994311}
   - {fileID: 8592853837715965110}
   - {fileID: 3139141445089194016}
   - {fileID: 895468553682713199}
@@ -1441,7 +1441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5250885116671148475, guid: 8659fd4489da89f4a84783c1a2665233, type: 3}
       propertyPath: m_Name
-      value: Box (5)
+      value: Box 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1519,7 +1519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5250885116671148475, guid: 8659fd4489da89f4a84783c1a2665233, type: 3}
       propertyPath: m_Name
-      value: Box (6)
+      value: Box 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1581,7 +1581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5250885116671148475, guid: 8659fd4489da89f4a84783c1a2665233, type: 3}
       propertyPath: m_Name
-      value: Box
+      value: Box 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1659,7 +1659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5250885116671148475, guid: 8659fd4489da89f4a84783c1a2665233, type: 3}
       propertyPath: m_Name
-      value: Box (1)
+      value: Box 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1721,7 +1721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5250885116671148475, guid: 8659fd4489da89f4a84783c1a2665233, type: 3}
       propertyPath: m_Name
-      value: Box (2)
+      value: Box 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1799,7 +1799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5250885116671148475, guid: 8659fd4489da89f4a84783c1a2665233, type: 3}
       propertyPath: m_Name
-      value: Box (3)
+      value: Box 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1861,7 +1861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5250885116671148475, guid: 8659fd4489da89f4a84783c1a2665233, type: 3}
       propertyPath: m_Name
-      value: Box (4)
+      value: Box 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
