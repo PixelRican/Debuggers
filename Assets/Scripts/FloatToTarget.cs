@@ -9,6 +9,7 @@ public class FloatToTarget : MonoBehaviour
     public void SetTarget(GameObject target)
     {
         _target = target.transform;
+        gameObject.transform.LookAt(target.transform);
     }
 
     private void Update()
