@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5033801203051696737, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5167925059111895691, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_IsActive
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DebuggerController
   origin: {fileID: 3956091976732632965}
   healthController: {fileID: 4623076432444327258}
-  teleportTarget: {fileID: 0}
+  spawnTransform: {fileID: 0}
 --- !u!114 &4623076432444327258
 MonoBehaviour:
   m_ObjectHideFlags: 0
