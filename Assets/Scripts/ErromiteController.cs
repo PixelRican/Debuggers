@@ -3,6 +3,12 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// Controls the behavior of the erromites
+/// </summary>
+/// <author>Roberto Mercado & Jack Wooldridge</author>
+/// <remarks>Commented by Roberto Mercado & Jack Wooldridge</remarks>
+/// <date>2025-05-02</date>
 public abstract class ErromiteController : MonoBehaviour
 {
     [SerializeField] private int attackDamage;
@@ -21,18 +27,27 @@ public abstract class ErromiteController : MonoBehaviour
 
     protected abstract void Attack(GameObject target, int damage);
 
+    /// <summary>
+    /// create erromite, add methods to controller
+    /// </summary>
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         GetComponent<HealthController>().HealthChanged += OnHealthChanged;
-    }
+    }  // End of Awake
 
+    /// <summary>
+    /// Get colliders for the player and patch generator
+    /// </summary>
     private void Start()
     {
         _patchGeneratorCollider = GameObject.FindWithTag("PatchGenerator").GetComponent<Collider>();
         _playerCollider = GameObject.FindWithTag("Player").GetComponent<Collider>();
-    }
+    }  // End of Start
 
+    /// <summary>
+    /// Handles movement of erromite and attack range
+    /// </summary>
     private void Update()
     {
         // Target the player when detected. Otherwise, target the patch generator.
@@ -75,10 +90,15 @@ public abstract class ErromiteController : MonoBehaviour
 
         // Chase down target.
         _agent.SetDestination(target.transform.position);
-    }
+    }  // End of Update
 
+    /// <summary>
+    /// Determines whether the erromite will target the player or the patch generator
+    /// </summary>
+    /// <returns></returns>
     private GameObject GetTarget()
     {
+        // If player is too far away from erromite, target the patch generator
         if (Vector3.Distance(transform.position, _playerCollider.transform.position) > playerDetectionRadius)
         {
             return _patchGeneratorCollider.gameObject;
@@ -120,34 +140,47 @@ public abstract class ErromiteController : MonoBehaviour
         }
 
         return _patchGeneratorCollider.gameObject;
-    }
+    }  // End of GetTarget
 
+    /// <summary>
+    /// When the erromite is destroyed, remove members from controllers
+    /// </summary>
     private void OnDestroy()
     {
         GetComponent<HealthController>().HealthChanged -= OnHealthChanged;
-    }
+    }  // End of OnDestroy
 
+    /// <summary>
+    /// Checks if erromite was killed after taking damage
+    /// </summary>
+    /// <param name="sender">Container of erroite's current health</param>
     private void OnHealthChanged(HealthController sender)
     {
+        // If erromite health has reached zero, create erromite soul, then destroy the erromit object
         if (sender.Health == 0)
         {
             GameObject obj = Instantiate(energyOrbPrefab, transform.position, Quaternion.identity);
             FloatToTarget mover = obj.GetComponent<FloatToTarget>();
-            mover.SetTarget(GameObject.FindGameObjectWithTag("EnergyOrb"));
+            mover.SetTarget(GameObject.FindGameObjectWithTag("EnergyOrb"));  // "EnergyOrb" refers to energy orb of patch generator
             Destroy(gameObject);
         }
-    }
+    }  // End of OnHealthChanged
 
+    /// <summary>
+    /// Handles attack windups and attack cooldowns of erromites
+    /// </summary>
     private IEnumerator<WaitForSeconds> GetAttackCoroutine()
     {
+        // Pause for windup
         yield return new WaitForSeconds(attackWindup);
 
         WaitForSeconds cooldownTime = new WaitForSeconds(attackCooldown);
 
+        // Repeatedly attack between attack cooldowns
         while (true)
         {
             Attack(_target, attackDamage);
             yield return cooldownTime;
         }
-    }
-}
+    }  // End of GetAttackCoroutine
+}  // End of ErromiteController
